@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheGarageApp.Services
 {
-    internal interface IVehicle
+    public interface IVehicle
     {
         string Type { get; }
         string RegisterNumber { get; }  
