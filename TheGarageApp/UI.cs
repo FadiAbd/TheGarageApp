@@ -22,6 +22,7 @@ namespace TheGarageApp
 
             while (true)
             {
+                
                 Console.WriteLine("1. Add a vehicle");
                 Console.WriteLine("2. Remove a vehicle");
                 Console.WriteLine("3. List all vehicles in the garage");
@@ -47,7 +48,9 @@ namespace TheGarageApp
                         SearchVehicle();
                         break;
                     case "5":
-                        return;
+                        Console.WriteLine("Exiting the application...");
+                        Environment.Exit(0);
+                        break;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
                         break;
@@ -109,6 +112,7 @@ namespace TheGarageApp
         private void SearchVehicle()
         {
             Console.WriteLine("Search for a vehicle by entering search criteria:");
+            
 
             Console.Write("Enter Register Number (leave blank to skip): ");
             string registerNumber = Console.ReadLine();
@@ -132,6 +136,7 @@ namespace TheGarageApp
             if (filteredVehicles.Any())
             {
                 Console.WriteLine($"Found {filteredVehicles.Count()} vehicles matching the search criteria:");
+                Console.WriteLine("----------------------------------------------------");
                 foreach (var vehicle in filteredVehicles)
                 {
                     DisplayVehicleDetails(vehicle);
@@ -148,19 +153,19 @@ namespace TheGarageApp
             switch (vehicle)
             {
                 case Car car:
-                    Console.WriteLine($"Cylinder Volume: {car.CylinderVolume}, Fuel Type: {car.FuelType}");
+                    Console.WriteLine($"Type: {car.Type} , Register number: {car.RegisterNumber}");
                     break;
                 case Bus bus:
-                    Console.WriteLine($"Number of Seats: {bus.NumberOfSeats}, Fuel Type: {bus.FuelType}");
+                    Console.WriteLine($"Type: {bus.Type} , Register number: {bus.RegisterNumber}");
                     break;
                 case AirPlane airplane:
-                    Console.WriteLine($"Number of Engines: {airplane.NumberOfEngines}, Cylinder Volume: {airplane.CylinderVolume}, Fuel Type: {airplane.FuelType}");
+                    Console.WriteLine($"Type: {airplane.Type} , Register number: {airplane.RegisterNumber}");
                     break;
                 case Boat boat:
-                    Console.WriteLine($"Number of Engines: {boat.NumberOfEngines}, Fuel Type: {boat.FuelType}, Length: {boat.Length}");
+                    Console.WriteLine($"Type: {boat.Type} , Register number: {boat.RegisterNumber}");
                     break;
                 case Motorcycle motorcycle:
-                    Console.WriteLine($"Cylinder Volume: {motorcycle.CylinderVolume}, Fuel Type: {motorcycle.FuelType}");
+                    Console.WriteLine($"Type: {motorcycle.Type} , Register number: {motorcycle.RegisterNumber}");
                     break;
                 default:
                     Console.WriteLine("Vehicle type not recognized.");
@@ -187,20 +192,21 @@ namespace TheGarageApp
         {
             int vehicleCount = garage.Vehicles.Count();
             Console.WriteLine($"List of vehicles in the garage: {vehicleCount}");
+            Console.WriteLine("-----------------------------------------------");
             foreach (var vehicle in garage.Vehicles)
             {
-                Console.WriteLine($"Type: {vehicle.Type}, Register Number: {vehicle.RegisterNumber}, Color: {vehicle.Color}, Wheels Number: {vehicle.WheelsNumber}");
+                Console.WriteLine($"Type: {vehicle.Type}\nRegister Number: {vehicle.RegisterNumber}\nColor: {vehicle.Color}\nWheels Number: {vehicle.WheelsNumber}");
 
                 if (vehicle is Car car)
-                    Console.WriteLine($"Cylinder Volume: {car.CylinderVolume}, Fuel Type: {car.FuelType}");
+                    Console.WriteLine($"Cylinder Volume: {car.CylinderVolume}\nFuel Type: {car.FuelType}");
                 else if (vehicle is Bus bus)
-                    Console.WriteLine($"Number of Seats: {bus.NumberOfSeats}, Fuel Type: {bus.FuelType}");
+                    Console.WriteLine($"Number of Seats: {bus.NumberOfSeats}\nFuel Type: {bus.FuelType}");
                 else if (vehicle is AirPlane airplane)
-                    Console.WriteLine($"Number of Engines: {airplane.NumberOfEngines}, Cylinder Volume: {airplane.CylinderVolume}, Fuel Type: {airplane.FuelType}");
+                    Console.WriteLine($"Number of Engines: {airplane.NumberOfEngines}\nCylinder Volume: {airplane.CylinderVolume}\nFuel Type: {airplane.FuelType}");
                 else if (vehicle is Boat boat)
-                    Console.WriteLine($"Number of Engines: {boat.NumberOfEngines}, Fuel Type: {boat.FuelType}, Length: {boat.Length}");
+                    Console.WriteLine($"Number of Engines: {boat.NumberOfEngines}\nFuel Type: {boat.FuelType}\nLength: {boat.Length}");
                 else if (vehicle is Motorcycle motorcycle)
-                    Console.WriteLine($"Cylinder Volume: {motorcycle.CylinderVolume}, Fuel Type: {motorcycle.FuelType}");
+                    Console.WriteLine($"Cylinder Volume: {motorcycle.CylinderVolume}\nFuel Type: {motorcycle.FuelType}");
 
                 Console.WriteLine();
             }
