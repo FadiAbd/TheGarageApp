@@ -273,15 +273,30 @@ namespace TheGarageApp
         private int GetNumericPropertyValue(string propertyName)
         {
             Console.Write($"Enter {propertyName}: ");
-            return int.Parse(Console.ReadLine());
+            if (int.TryParse(Console.ReadLine(), out int result))
+            {
+                return result;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid integer.");
+                return -1; // Return a default value or an indicator of error
+            }
         }
 
         private double GetDoublePropertyValue(string propertyName)
         {
             Console.Write($"Enter {propertyName}: ");
-            return double.Parse(Console.ReadLine());
+            if (double.TryParse(Console.ReadLine(), out double result))
+            {
+                return result;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid double.");
+                return -1; // Return a default value or an indicator of error
+            }
         }
-
 
     }
 }
