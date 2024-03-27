@@ -28,7 +28,7 @@ namespace TheGarageApp.Models
             {
                 if (!IsValidRegisterNumber(value))
                 {
-                    Console.WriteLine("Error: InvalidCastException register number format.");
+                    Console.WriteLine("Error: Invalid register number format.");
                 }
                 registerNumber = value.ToUpper();
             }
